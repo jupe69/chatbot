@@ -6,12 +6,12 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({ origin: 'https://aketh.gr' }));
 app.use(express.json());
 
 app.post('/chat', async (req, res) => {
   try {
-    const response = await axios.post('https://api.openai.com/v1/chat/completions', req.body, {
+    const response = await axios.post('https://chatbot-y4pn.onrender.com/chat', req.body, {
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
